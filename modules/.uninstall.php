@@ -4,7 +4,9 @@ class un {
   public function uni() {
     global $system;
     // removing old files
-    if ($system=="termux") {
+    if ($system == "windows") {
+      echo "\033[01;33mWindows: To uninstall, simply delete the IP-Tracer directory.\033[00m\n";
+    } elseif ($system=="termux") {
       system("rm -rf /data/data/com.termux/files/usr/share/IP-Tracer");
       system("rm -rf /data/data/com.termux/files/usr/bin/ip-tracer");
       system("rm -rf /data/data/com.termux/files/usr/bin/trace");
@@ -19,7 +21,7 @@ class un {
     }
   }
   function logo() {
-    system("clear");
+    clear_screen();
     echo <<<EOL
 \033[01;33m
 
@@ -38,11 +40,18 @@ class un {
 \033[00m
 EOL;
 
-    if (file_exists("/usr/bin/ip-tracer")) {
+    global $system;
+    $removed = false;
+    
+    if ($system == "windows") {
+      $removed = true;
+      echo "\n\033[01;32m        IP-Tracer uninstall information displayed !!!\033[00m\n";
+    } elseif (file_exists("/usr/bin/ip-tracer")) {
       echo "\n\033[01;31m        Sorry IP-Tracer is not removed !!!\033[00m\n";
     } else if(file_exists("/data/data/com.termux/files/usr/bin/ip-tracer")) {
       echo "\n\033[01;31m        Sorry IP-Tracer is not removed !!!\033[00m\n";
     } else {
+      $removed = true;
       echo "\n\033[01;32m        IP-Tracer is uninstalled !!!\033[00m\n";
     }
   }

@@ -1,10 +1,11 @@
 <?php
+include("modules/system.php");
 function tracm() {
   $data = @unserialize(file_get_contents('http://ip-api.com/php/'));
   $FCL="\033[01;33m";
   $MCL="\033[01;37m>\033[01;32m";
   $NCL="\033[00m";
-  system("clear");
+  clear_screen();
   date_default_timezone_set($data['timezone']);
   echo <<<EOL
 \033[01;33m

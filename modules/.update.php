@@ -1,10 +1,11 @@
 <?php
+include("modules/system.php");
 include("modules/trm.php");
 include("modules/help.php");
 include("modules/trip.php");
 
 function logo() {
-  system("clear");
+  clear_screen();
   echo <<<EOL
 \033[01;33m
 
@@ -25,12 +26,21 @@ EOL;
 }
 
 function upd() {
+  global $system;
   logo();
   echo "\n\033[01;32mUpdating IP-Tracer.........\033[01;37m\n\n";
   sleep(1);
-  system("cd ~/ && git clone https://github.com/rajkumardusad/IP-Tracer.git");
-  system("cd ~/ && sudo git clone https://github.com/rajkumardusad/IP-Tracer.git");
-  system("cd ~/IP-Tracer && sh install");
+  
+  if ($system == "windows") {
+    $homeDir = getenv("USERPROFILE");
+    system("cd /d " . $homeDir . " && git clone https://github.com/rajkumardusad/IP-Tracer.git");
+    system("cd /d " . $homeDir . "\\IP-Tracer && install.bat");
+  } else {
+    system("cd ~/ && git clone https://github.com/rajkumardusad/IP-Tracer.git");
+    system("cd ~/ && sudo git clone https://github.com/rajkumardusad/IP-Tracer.git");
+    system("cd ~/IP-Tracer && sh install");
+  }
+  
   logo();
   echo "\n\033[01;32m              IP-Tracer updated !!!\033[01;37m\n";
   sleep(1);
