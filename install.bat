@@ -1,7 +1,7 @@
 @echo off
 REM Tool Name :- IP-Tracer
-REM Author :- Rajkumar Dusad
-REM Date :- 5/8/2018
+REM Author :- its-anya
+REM Date :- 11/4/2025
 REM Windows Support Added
 
 echo Checking PHP installation...
@@ -18,4 +18,5 @@ if %errorlevel% neq 0 (
 echo PHP found!
 php .setup.php
 pause
+
 
