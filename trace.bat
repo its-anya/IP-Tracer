@@ -1,7 +1,7 @@
 @echo off
 REM Tool Name :- IP-Tracer
-REM Author :- Rajkumar Dusad
-REM Date :- 10/10/2018
+REM Author :- its-anya
+REM Date :- 11/4/2025
 REM Windows Support Added
 
 if "%1"=="-m" (
@@ -50,4 +50,5 @@ echo  update              to update ip-tracer.
 echo  start               to start ip-tracer menu.
 
 :end
+
 
