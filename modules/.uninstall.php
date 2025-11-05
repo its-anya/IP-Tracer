@@ -5,7 +5,7 @@ class un {
     global $system;
     // removing old files
     if ($system == "windows") {
-      echo "\033[01;33mWindows: To uninstall, simply delete the IP-Tracer directory.\033[00m\n";
+      // Windows Files are in current directory user needs to delete folder manually
     } elseif ($system=="termux") {
       system("rm -rf /data/data/com.termux/files/usr/share/IP-Tracer");
       system("rm -rf /data/data/com.termux/files/usr/bin/ip-tracer");
@@ -44,8 +44,8 @@ EOL;
     $removed = false;
     
     if ($system == "windows") {
+      echo "\n\033[01;33m        To uninstall IP-Tracer on Windows, delete the IP-Tracer folder.\033[00m\n";
       $removed = true;
-      echo "\n\033[01;32m        IP-Tracer uninstall information displayed !!!\033[00m\n";
     } elseif (file_exists("/usr/bin/ip-tracer")) {
       echo "\n\033[01;31m        Sorry IP-Tracer is not removed !!!\033[00m\n";
     } else if(file_exists("/data/data/com.termux/files/usr/bin/ip-tracer")) {
